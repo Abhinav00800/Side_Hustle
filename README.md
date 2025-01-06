@@ -72,7 +72,7 @@ Follow these steps to get the Sidehustle platform up and running:
    (http://localhost:3000)
   You should now have the Sidehustle platform running locally.
 
-  ##Summary
+ ## Summary
   Sidehustle is more than just a marketplace—it's a platform designed to empower local entrepreneurs and help them thrive by connecting them directly with their community. By using a powerful combination of     
   modern technologies and intelligent features like product suggestions and price comparisons, Sidehustle offers a unique and engaging experience for both business owners and customers.
   With its easy-to-use interface, enhanced visibility for businesses, and the ability for customers to find the best deals, Sidehustle is revolutionizing the way people shop locally and support small businesses.
