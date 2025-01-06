@@ -1,6 +1,5 @@
 # Sidehustle - Empowering Local Entrepreneurs
 
-![Sidehustle Logo](https://via.placeholder.com/600x150.png?text=Sidehustle+Logo)
 
 ## Introduction
 
