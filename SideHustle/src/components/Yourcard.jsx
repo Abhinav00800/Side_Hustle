@@ -4,43 +4,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCart, useDispatchCart } from './contextReducer';
 
 export default function Card(props) {
-    const navigate = useNavigate();
-    const foodItem = props.item;
-    let data = useCart();
-    let dispatch = useDispatchCart();
     const [qty, setQty] = useState(1);
     const [size, setSize] = useState(props.options[0]?.quantity || ""); // Default to first quantity
     const priceRef = useRef();
 
-    const handleADDToCart = async () => {
-        let food = [];
-        for (const item of data) {
-            if (item.id === foodItem._id) {
-                food = item;
-                break;
-            }
-        }
-
-        if (food.length > 0) {
-            if (food.size === size) {
-                await dispatch({ type: "UPDATE", id: foodItem._id, price: finalPrice, qty: qty });
-                return;
-            } else if (food.size !== size) {
-                await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size, img: props.ImgSrc });
-                console.log("Size different so simply ADD one more to the list");
-                return;
-            }
-            return;
-        }
-
-        await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size });
-    };
 
     useEffect(() => {
         if (priceRef.current) {
             setSize(priceRef.current.value);
         }
     }, []);
+    useEffect(() => {
+        
+    },);
 
     let options = props.options;
 
@@ -60,15 +36,6 @@ export default function Card(props) {
                     <div className="card-body">
                         <h5 className="card-title fontchange">{props.foodname}</h5>
                         <div className='container w-100'>
-                            {/* Quantity Selector */}
-                            <select className='m-2 h-50 buttonbg rounded' onChange={(e) => setQty(e.target.value)}>
-                                {Array.from(Array(6), (e, i) => {
-                                    return (
-                                        <option key={i + 1} value={i + 1}>{i + 1}</option>
-                                    );
-                                })}
-                            </select>
-
                             {/* Size Selector */}
                             <select className='m-2 h-50 buttonbg rounded' ref={priceRef} onChange={(e) => setSize(e.target.value)}>
                                 {sizeOptions.map((opt) => (
@@ -76,15 +43,10 @@ export default function Card(props) {
                                         {opt.quantity}
                                     </option>
                                 ))}
+                                
                             </select>
-
-                            {/* Price Display */}
                             <div className='d-inline h-100 fs-5'>
                                 ₹{finalPrice}/-
-                            </div>
-                            <hr />
-                            <div className='p-3'>
-                                <button className="btn buttonbg text-white" onClick={handleADDToCart}>Add to cart</button>
                             </div>
                         </div>
                     </div>

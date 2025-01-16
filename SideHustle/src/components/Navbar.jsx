@@ -42,6 +42,11 @@ export default function Navbar() {
                   <i className="bi bi-box-fill me-1"></i>My Orders
                 </Link> 
                 : ""}
+              {(localStorage.getItem('authToken')) ? 
+                <Link className="nav-link text-light fs-5 m-1" to="/addproduct">
+                  <i className="bi bi-plus-circle me-1"></i>Add Product
+                </Link> 
+                : ""}
             </div>
             {!localStorage.getItem('authToken') ? (
               <div className='d-flex'>

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user'); // Ensure model name matches
+const User = require('../models/user');
 const { body, validationResult } = require('express-validator');
 
 const bcrypt=require('bcryptjs');
@@ -12,11 +12,11 @@ router.post("/createuser", [body('email','invalid email').isEmail(),
 body('password','invalid password').isLength({ min: 6 }), body('name').isLength({ min: 4 })], async (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
-        return res.status(400).json({ success: false, errors: errors.array() }); // Return all validation errors
+        return res.status(400).json({ success: false, errors: errors.array() }); 
     }
 
     try {
-        const { name, location, email, password } = req.body; // Use request body for user data
+        const { name, location, email, password } = req.body; 
         const salt=await bcrypt.genSalt(10);
         const secpassword=await bcrypt.hash(password,salt);
         await User.create({
@@ -25,10 +25,10 @@ body('password','invalid password').isLength({ min: 6 }), body('name').isLength(
             email,
             password:secpassword
         });
-        res.status(201).json({ success: true }); // Return 201 Created
+        res.status(201).json({ success: true });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ success: false, error: error.message }); // 500 Internal Server Error
+        res.status(500).json({ success: false, error: error.message }); 
     }
 });
 
@@ -59,7 +59,7 @@ body('password','invalid password').isLength({ min: 6 })], async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ success: false, error: error.message }); // 500 Internal Server Error
+        res.status(500).json({ success: false, error: error.message }); 
     }
 });
 

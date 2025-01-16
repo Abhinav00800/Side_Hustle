@@ -12,6 +12,7 @@ import { CartProvider } from './components/contextReducer';
 import Chatbot from './components/Chatbot';
 import MyOrders from './Screens/MyOrders';
 import Categories from './Screens/Categories';
+import AddProduct from './Screens/AddProduct';
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route exact path='/myOrder' element={<MyOrders/>} />
           <Route exact path='/chatbot' element={<Chatbot/>} />
           <Route exact path='/Categories' element={<Categories/>} />
+          <Route exact path='/addproduct' element={<AddProduct/>} />
 
         </Routes>
       </div>

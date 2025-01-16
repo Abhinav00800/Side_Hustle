@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 app.use('/api',require('./Routes/Createuser')); 
 app.use('/api',require('./Routes/DisplayData')); 
 app.use('/api',require('./Routes/OrderData'));
+app.use('/api',require('./Routes/AddProduct'));
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

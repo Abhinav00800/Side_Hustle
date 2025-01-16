@@ -6,14 +6,13 @@ const mongoDB = async () => {
         await mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log("Connected successfully");
 
-        const fetch_data = mongoose.connection.db.collection("Ondemand");
+        const fetch_data = mongoose.connection.db.collection("ondemands");
         const data = await fetch_data.find({}).toArray();
         global.food_items = data;
         const foodCat = mongoose.connection.db.collection("Ondemand2");
         const catData=await foodCat.find({}).toArray();
         global.foodCategory=catData;
 
-        // console.log(global.food_items)
     } catch (err) {
         console.error("Connection error:", err);
     }

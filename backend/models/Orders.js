@@ -14,7 +14,7 @@ const OrderSchema= new Schema({
     order_date:{
         type:Date,
         require:true
-    }
+    },
 })
 
 module.exports = mongoose.model('Order', OrderSchema); 

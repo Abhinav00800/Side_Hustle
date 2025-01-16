@@ -27,7 +27,7 @@ export default function MyOrder() {
         } catch (error) {
             console.error("Error fetching order data:", error);
         }
-    };
+    };  
 
     useEffect(() => {
         fetchMyOrder();
