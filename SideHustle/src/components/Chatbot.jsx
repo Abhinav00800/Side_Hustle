@@ -3,9 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap is imported
 
-const API_KEY = 'AIzaSyDcw5qJwF3KkDNZI2cG_9vVvCDjLLMXGik';
+const API_KEY = 'AIzaSyCj3YsagBV9o1CfpokKwxTvJyrgXrvmLgc';
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
 
 const Chatbot = () => {
   const [chatHistory, setChatHistory] = useState([]);
@@ -62,7 +63,7 @@ const Chatbot = () => {
   };
 
   const sendInitialMessage = async () => {
-    const initialMessage = "Hello! Please start the conversation directly by greeting and saying thanks for choosing Ondemand. Here you can tell me how to create new various products.";
+    const initialMessage = "Hello! Please start the conversation directly by greeting and saying thanks for choosing SideHustle(A online platform to enhance side business). Here you can tell me how to create new various products.";
     try {
       const result = await model.generateContent(initialMessage);
       const response = await result.response;
@@ -134,3 +135,5 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
+
+

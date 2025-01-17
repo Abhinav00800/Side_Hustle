@@ -13,6 +13,7 @@ import Chatbot from './components/Chatbot';
 import MyOrders from './Screens/MyOrders';
 import Categories from './Screens/Categories';
 import AddProduct from './Screens/AddProduct';
+import Landing from './Screens/Landing';
 
 export default function App() {
   return (
@@ -20,7 +21,8 @@ export default function App() {
     <BrowserRouter>
       <div>
         <Routes>
-          <Route exact path='/' element={<Home/>} />
+          <Route exact path='/home' element={<Home/>} />
+          <Route exact path='/' element={<Landing/>} />
           <Route exact path='/login' element={<Login/>} />
           <Route exact path='/signup' element={<Signup/>} />
           <Route exact path='/cart' element={<Cart/>} />

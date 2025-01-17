@@ -78,13 +78,15 @@ export default function AddProduct() {
         if (!email) return;
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/myproducts`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/myproducts/${email}`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email })
+
             });
             const result = await response.json();
+            console.log(result);
             setMyProducts(result.mydata || []);
+            // console.log(myProducts);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -97,12 +99,21 @@ export default function AddProduct() {
     return (
         <div>
             <Navbar />
-            <div className="d-flex justify-content-between m-3">
-                <h1>Your Products</h1>
-                <button className="btn btn-primary" onClick={handleShow}>
-                    <i className="bi bi-plus-circle"></i> Add New
+            <div className="d-flex justify-content-between align-items-center m-3">
+                <div className='m-4 text-center' style={{ fontFamily: "Bodoni", fontWeight: "bold", color: " rgb(197, 170, 106)" }}>
+
+                    <h1 className="font-weight-bold text-buttonbg">Your Products</h1>
+                </div>
+                <button
+                    className="buttonbg d-flex justify-content-end align-items-center px-3 py-2"
+                    onClick={handleShow}
+                    style={{ borderRadius: '1rem' }}
+                >
+                    <i className="bi bi-plus-circle me-2"></i> Add New
                 </button>
             </div>
+            <hr />
+
 
             {/* Product Modal */}
             <Modal show={showModal} onHide={handleClose}>
@@ -124,12 +135,19 @@ export default function AddProduct() {
                         <Form.Group className="mb-3">
                             <Form.Label>Category Name</Form.Label>
                             <Form.Control
-                                type="text"
+                                as="select"
                                 name="CategoryName"
                                 value={productDetails.CategoryName}
                                 onChange={handleInputChange}
                                 required
-                            />
+                            >
+                                <option value="Food">Food</option>
+                                <option value="Home Made Items">Home Made Items</option>
+                                <option value="Toys">Toys</option>
+                                <option value="Cakes">Cakes</option>
+                                <option value="Miscellaneous">Miscellaneous</option>
+                            </Form.Control>
+
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Image URL</Form.Label>
@@ -178,12 +196,15 @@ export default function AddProduct() {
                                 />
                             </div>
                         ))}
-                        <Button variant="secondary" onClick={addQuantity}>
-                            <i className="bi bi-plus-circle"></i> Add Option
-                        </Button>
-                        <Button type="submit" variant="primary" className="mt-3">
-                            Save Product
-                        </Button>
+                        <div className='d-flex justify-content-between align-items-center'>
+
+                            <Button className="buttonbg" onClick={addQuantity}>
+                                <i className="bi bi-plus-circle"></i> Add Option
+                            </Button>
+                            <Button type="submit" className="mt-3 buttonbg">
+                                Save Product
+                            </Button>
+                        </div>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
@@ -191,22 +212,25 @@ export default function AddProduct() {
                 </Modal.Footer>
             </Modal>
 
-            <div className="m-3">
-                 
-            <div className="m-3">
-    {myProducts.length > 0 ? (
-        myProducts.map((product) => (
-            <Yourcard
-                key={product._id || product.id || Math.random()} 
-                item={product}
-            />
-        ))
-    ) : (
-        <p>No products available.</p>
-    )}
-</div>
-    
+
+
+            <div className="m-3 d-flex flex-wrap justify-content-start">
+                {myProducts.length > 0 ? (
+                    myProducts.map((product) => (
+                        <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <Yourcard
+                                key={product._id || product.id || Math.random()}
+                                name={product.name}
+                                options={product.options}
+                                img={product.img}
+                            />
+                        </div>
+                    ))
+                ) : (
+                    <p>No products available.</p>
+                )}
             </div>
+
             <Fotter />
         </div>
     );

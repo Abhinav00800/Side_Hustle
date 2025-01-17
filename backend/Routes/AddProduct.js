@@ -29,14 +29,14 @@ router.post("/AddProduct", async (req, res) => {
     }
 });
 
-router.post('/myproducts',async (req,res)=>{
+router.post('/myproducts/:email',async (req,res)=>{
     try{
         
-        const {email}= req.body;
+        const email= req.params.email;
         if(!email){
             return res.status(400).json({ success: false, message: "User not found" });
         }
-        const mydata= await Ondemand.findOne({ email: email })
+        const mydata= await Ondemand.find({ email: email })
         // console.log(mydata);
         res.json({ mydata: mydata});
 

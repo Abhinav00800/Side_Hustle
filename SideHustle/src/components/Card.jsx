@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
 import './Navbarstyle.css';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart, useDispatchCart } from './contextReducer';
 
 export default function Card(props) {
+    const buttonRef = useRef(null);
     const navigate = useNavigate();
     const foodItem = props.item;
     let data = useCart();
@@ -35,6 +36,9 @@ export default function Card(props) {
 
         await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size });
     };
+    const handleAsk = async () => {
+        alert("Please contact the following busniess partner for more details: "+ props.email)
+    }
 
     useEffect(() => {
         if (priceRef.current) {
@@ -55,6 +59,7 @@ export default function Card(props) {
     return (
         <div>
             <div>
+
                 <div className="card mt-3" style={{ width: "20rem" }}>
                     <img src={props.foodimg} className="card-img-top" style={{ height: "200px", objectFit: "cover" }} alt="Nothing" />
                     <div className="card-body">
@@ -83,8 +88,14 @@ export default function Card(props) {
                                 ₹{finalPrice}/-
                             </div>
                             <hr />
-                            <div className='p-3'>
-                                <button className="btn buttonbg text-white" onClick={handleADDToCart}>Add to cart</button>
+                            <div className='d-flex align-items-center justify-content-between'>
+
+                                <div className='p-3'>
+                                    <button className=" buttonbg text-white" onClick={handleADDToCart}>Add to cart</button>
+                                </div>
+                                <div className='p-3'>
+                                    <button className="buttonbg text-white" onClick={handleAsk}>Ask details</button>
+                                </div>
                             </div>
                         </div>
                     </div>

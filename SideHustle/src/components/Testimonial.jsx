@@ -8,10 +8,9 @@ function Testimonial() {
     <div style={styles.container}>
       <section>
         <div style={styles.innerContainer}>
-          <h1 style={styles.title}>Testimonial</h1>
-          <h2 style={styles.subtitle}>
-            What our <span style={styles.highlight}>customers</span> are saying
-          </h2>
+          <div className='fs-1 m-4 text-center' style={{fontFamily:"Bodoni", fontWeight:"bold", color:" rgb(197, 170, 106)"}}>
+          <h1>Testimonial</h1>
+          </div>
           <div style={styles.testimonialWrapper}>
             <div style={styles.testimonialCard}>
               <img alt="testimonial" style={styles.image} src={pic1} />
@@ -55,10 +54,10 @@ function Testimonial() {
 
 const styles = {
   container: {
-    padding: "10px",
+    padding: "20px",
   },
   innerContainer: {
-    maxWidth: "800px",
+    maxWidth: "1200px",
     margin: "0 auto",
     padding: "20px",
   },
@@ -72,28 +71,35 @@ const styles = {
     textAlign: "center",
     fontSize: "2rem",
     fontWeight: "600",
-    marginBottom: "20px",
+    marginBottom: "30px",
   },
   highlight: {
     color: "#D53F8C", // pink color
   },
   testimonialWrapper: {
     display: "flex",
+    justifyContent: "space-between",
+    gap: "20px", // Ensures consistent spacing between cards
     flexWrap: "wrap",
-    margin: "-10px",
   },
   testimonialCard: {
-    flex: "1 1 30%",
-    margin: "10px",
+    flex: "1 1 calc(33.333% - 20px)", // Cards take up equal width minus spacing
+    maxWidth: "calc(33.333% - 20px)", // Ensures consistent width
+    margin: "10px 0",
     padding: "20px",
     textAlign: "center",
-    background: "#f9f9f9",
-    borderRadius: "8px",
-    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+    background: "#ffffff",
+    borderRadius: "12px",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+    transition: "transform 0.3s, box-shadow 0.3s",
+  },
+  testimonialCardHover: {
+    transform: "scale(1.05)",
+    boxShadow: "0 6px 16px rgba(0, 0, 0, 0.2)",
   },
   image: {
-    width: "200px",
-    height: "200px",
+    width: "150px",
+    height: "150px",
     marginBottom: "15px",
     objectFit: "cover",
     borderRadius: "50%",
@@ -101,7 +107,7 @@ const styles = {
     background: "#E2E8F0",
   },
   text: {
-    lineHeight: "1.5",
+    lineHeight: "1.6",
     color: "black",
   },
   separator: {

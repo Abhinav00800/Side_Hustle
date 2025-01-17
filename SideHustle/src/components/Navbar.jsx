@@ -16,6 +16,7 @@ export default function Navbar() {
     localStorage.removeItem("authToken");
     navigate('/');
   };
+  
 
   const loadCart = () => {
     setCartView(true);
@@ -31,7 +32,7 @@ export default function Navbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav me-auto">
-              <Link className="nav-link text-light fs-5 m-1" to="/">
+              <Link className="nav-link text-light fs-5 m-1" to="/home">
                 <i className="bi bi-house-fill me-1"></i>Home
               </Link>
               <Link className="nav-link text-light fs-5 m-1" to="/Categories">

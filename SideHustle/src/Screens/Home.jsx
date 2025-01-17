@@ -28,6 +28,9 @@ export default function Home() {
   useEffect(() => {
     loadData();
   }, []);
+  useEffect(() => {
+    loadData();
+  });
 
   return (
     <div>
@@ -69,7 +72,7 @@ export default function Home() {
               items.CategoryName === data.CategoryName && items.name.toLowerCase().includes(search.toLowerCase())
             )).map(filteritems => (
               <div className='col-12 col-md-6 col-lg-3' key={filteritems._id}>
-                <Card item={filteritems} foodname={filteritems.name} foodimg={filteritems.img} desc={filteritems.description} options={filteritems.options} />
+                <Card email={filteritems.email} item={filteritems} foodname={filteritems.name} foodimg={filteritems.img} desc={filteritems.description} options={filteritems.options} />
               </div>
             )) : ""}
           </div>
