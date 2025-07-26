@@ -3,6 +3,8 @@ import Fotter from '../components/Fotter';
 import Navbar from '../components/Navbar';
 import Yourcard from '../components/Yourcard';
 import { Modal, Button, Form } from 'react-bootstrap';
+import BootstrapToastExample from '../components/BootstrapToastExample';
+
 
 export default function AddProduct() {
     const [showModal, setShowModal] = useState(false);

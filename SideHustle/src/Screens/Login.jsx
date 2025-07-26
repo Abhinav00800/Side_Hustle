@@ -53,6 +53,8 @@ export default function Login() {
 
             <button type="submit" className="btn btn-success">Submit</button>
             <Link to='/signup' className="btn btn-danger m-3">New User</Link>
+            <Link to="/forgot-password" className="btn btn-danger m-3">Forgot Password?</Link>
+
           </form>
         </div>
       </div>

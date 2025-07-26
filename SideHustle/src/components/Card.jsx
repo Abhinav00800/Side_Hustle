@@ -2,6 +2,7 @@ import './Navbarstyle.css';
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart, useDispatchCart } from './contextReducer';
+import BootstrapToastExample from './BootstrapToastExample';
 
 export default function Card(props) {
     const buttonRef = useRef(null);
@@ -15,6 +16,8 @@ export default function Card(props) {
 
     const handleADDToCart = async () => {
         let food = [];
+
+        <BootstrapToastExample />
         for (const item of data) {
             if (item.id === foodItem._id) {
                 food = item;
@@ -33,12 +36,12 @@ export default function Card(props) {
             }
             return;
         }
-
         await dispatch({ type: "ADD", id: foodItem._id, name: foodItem.name, price: finalPrice, qty: qty, size: size });
     };
-    const handleAsk = async () => {
-        alert("Please contact the following busniess partner for more details: "+ props.email)
-    }
+    const handleAsk = () => {
+        navigate(`/chat/${props.item._id}/${props.email}`);
+    };
+
 
     useEffect(() => {
         if (priceRef.current) {
