@@ -84,7 +84,7 @@ export default function ChatBox({ currentUserEmail }) {
   };
 
   return (
-    <div className="max-w-3xl mx-auto h-[80vh] flex flex-col bg-white shadow-lg rounded-2xl overflow-hidden">
+    <div className="max-w-3xl mx-auto mt-16 h-[80vh] flex flex-col bg-white shadow-lg rounded-2xl overflow-hidden">
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-amber-600 to-amber-700 text-white">
         <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-sm font-semibold">
