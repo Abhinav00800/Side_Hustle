@@ -1,5 +1,4 @@
 import React from 'react';
-import './Navbarstyle.css';
 
 export default function Carousel() {
     return (
